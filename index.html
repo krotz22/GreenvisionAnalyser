@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Green Vision Analyser</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <!-- Video Background -->
+    <video autoplay muted loop id="background-video">
+        <source src="bg.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <header>
+        <div class="logo">GVA</div>
+        <nav>
+            <ul>
+                <li><a href="#">Solutions</a></li>
+                <li><a href="#">About</a></li>
+            </ul>
+        </nav>
+        <a href="#" class="signup">Sign up</a>
+        <button class="dashboard-btn" onclick="openDashboard()">Dashboard</button>
+    </header>
+    
+    <main>
+        <section class="intro-section">
+            <p class="intro-text">Welcome to Green Vision Analyser, where our innovative platform utilizes computer vision technology to facilitate TREE tracking, tree counting, and detection.</p>
+        </section>
+        <section class="upload-section">
+            <div class="upload-box">
+                <div class="upload-area" ondragover="dragoverHandler(event)" ondrop="dropHandler(event)">
+                    <p>Browse or Drag and Drop The File MP4, MOV</p>
+                    <button class="upload-button" onclick="openFileExplorer()">
+                        <span>+</span> Upload Video
+                    </button>
+                    <input type="file" id="fileInput" accept="video/mp4,video/quicktime" style="display: none;" onchange="handleFileInput(event)">
+                </div>
+            </div>
+        </section>
+        <section class="drawing-section">
+            <p>Draw the detection line on the image:</p>
+            <div id="drawingContainer" class="preview-box">
+                <canvas id="canvas"></canvas>
+            </div>
+            <div style="margin-top:5px">
+                <span>Size: </span>
+                <input type="range" min="1" max="50" value="10" class="size" id="sizeRange"/>
+            </div>
+            <div class="color-palette">
+                <div class="color-option" data-color="#F5F5F5" style="background-color: #F5F5F5;"></div>
+                <div class="color-option" data-color="#C0C0C0" style="background-color: #C0C0C0;"></div>
+                <div class="color-option" data-color="#ADD8E6" style="background-color: #ADD8E6;"></div>
+                <div class="color-option" data-color="#87CEEB" style="background-color: #87CEEB;"></div>
+                <div class="color-option" data-color="#FF0000" style="background-color: #FF0000;"></div>
+                <div class="color-option" data-color="#FFA500" style="background-color: #FFA500;"></div>
+                <div class="color-option" data-color="#FFFF00" style="background-color: #FFFF00;"></div>
+                <div class="color-option" data-color="#008000" style="background-color: #008000;"></div>
+            </div>
+            <div class="button-container" style="width: 100%;">
+                <button id="clear" class="button">Clear</button>
+                <button id="export" class="button">Export Image</button>
+                <button id="processButton" class="button">Process</button>
+            </div>
+        </section>
+        <div class="space" style="width: 100%; height:50px;"></div>
+    </main>
+    <div id="dashboard" class="dashboard">
+        <button class="close-btn" onclick="closeDashboard()">✖</button>
+        
+        <!-- Dashboard buttons -->
+        <div class="dashboard-content">
+            <h2>Dashboard</h2>
+            <button class="dashboard-action-btn" >About</button>
+            <button class="dashboard-action-btn" onclick="window.open('https://ee-keerthanavadivel85.projects.earthengine.app/view/gva', '_blank')">
+    View Forest Inventory
+</button>
+
+            <button class="dashboard-action-btn">Real-time Monitoring</button>
+            <button class="dashboard-action-btn" onclick="downloadFile('report')">Generate Reports</button>
+        </div>
+    </div>
+<!-- Add this near the bottom of the <body> -->
+    <div id="loading" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); color: white; z-index: 1000; justify-content: center; align-items: center; flex-direction: column;">
+        <div class="spinner"></div>
+        <div style="margin-top: 20px; font-size: 24px;">Counting trees... Please wait.</div>
+      </div>
+      
+      
+
+<script>
+function downloadFile(fileType) {
+    const url = `http://127.0.0.1:8000/download/${fileType}`;
+    window.open(url, '_blank');
+}
+</script>
+
+    <script src="main.js"></script>
+</body>
+</html>

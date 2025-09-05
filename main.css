@@ -1,0 +1,339 @@
+/* Style for the video background */
+#background-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw; /* Ensures the video covers the full viewport width */
+    height: 100vh; /* Ensures the video covers the full viewport height */
+    z-index: -1; /* Puts the video behind the content */
+    object-fit: cover; /* Ensures the video maintains its aspect ratio */
+    object-position: center; /* Centers the video */
+    pointer-events: none; /* Prevents interaction with the video */
+}
+
+/* General styles */
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #12112E;
+    color: white;
+    height: 100%; /* Make sure the body covers the full height of the viewport */
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    z-index: 1;
+    position: relative; /* Ensures the header is on top of the video */
+}
+
+/* Ensures the content scrolls while video stays fixed */
+main, section {
+    position: relative;
+    z-index: 1;
+}
+
+/*dashbord */
+
+
+.dashboard-btn {
+    background-color: #0add9e;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+.dashboard-btn:hover {
+    background-color: #0cb083;
+}
+
+/* Sidebar Dashboard */
+.dashboard {
+    position: fixed;
+    top: 0;
+    left: -30%; /* Hide dashboard initially */
+    width: 25%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Transparent background */
+    transition: left 0.3s ease;
+    z-index: 2;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* Updated Button styles - larger buttons */
+.dashboard-action-btn {
+    background-color: #0cb083;
+    color: white;
+    border: none;
+    width: 80%;  /* Full width of sidebar */
+    height: 60px;  /* Larger button height */
+    margin-bottom: 20px; /* Space between buttons */
+    text-align: center;
+    font-size: 25px; /* Larger text */
+    cursor: pointer;
+    border-radius: 5px; /* Rounded corners */
+}
+
+.dashboard-action-btn:hover {
+    background-color: #0add9e;
+}
+
+/* Sidebar open */
+.dashboard.open {
+    left: 0; /* Show dashboard */
+}
+
+.intro-section, .upload-section, .drawing-section {
+    z-index: 1;
+    position: relative; /* Ensures all sections are above the video */
+}
+
+/* Rest of your existing styles... */
+.color-palette {
+    display: flex;
+    gap: 10px;
+}
+
+.color-option {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+.color-option.selected {
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
+}
+
+/* Continue with other CSS styles as you have... */
+
+
+.logo {
+    font-size: 1.9em;
+    font-weight: bold;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 20px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 1em;
+}
+
+.signup {
+    background-color: white;
+    color: black;
+    padding: 10px 20px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.intro-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 90px;
+}
+
+.intro-text {
+    font-family: fantasy;
+    font-size: 1.7em;
+    color: #ffffff;
+    text-align: center;
+    max-width: 1200px;
+}
+
+.upload-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(60vh - 80px);
+}
+
+.upload-box {
+    background-color: #ffffff;
+    border: 2px solid #E3F2FD;
+    border-radius: 10px;
+    padding: 40px;
+    text-align: center;
+    width: 80%;
+    max-width: 600px;
+    color: black;
+}
+
+.upload-area {
+    background-color: #E3F2FD;
+    border: 2px dashed #90CAF9;
+    border-radius: 10px;
+    padding: 40px;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.upload-area p {
+    margin: 10px 0;
+}
+
+.upload-button {
+    background: linear-gradient(to right, #0add9e, #3d8ac9);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.upload-button span {
+    background-color: white;
+    color: #00b09b;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.drawing-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: calc(60vh - 80px);
+    padding-top: 0%;
+}
+
+.preview-box {
+    background-color: rgba(74, 74, 95, 0.8);
+    border-radius: 10px;
+    padding: 40px;
+    text-align: center;
+    width: 70%;
+    height: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+#canvas {    
+    max-width: 100%;
+    max-height: 100%;
+}
+
+#drawingContainer{
+    width: 650px;
+}
+/* Style for the container */
+.button-container {
+    margin-top: 10px;
+    text-align: center; /* Align buttons to the center */
+}
+
+/* Style for the buttons */
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin: 15px; /* Add some spacing between buttons */
+}
+
+.button:hover {
+    background-color: #45a049;
+}
+
+.button:active {
+    background-color: #367b34;
+}
+#download{
+    padding: 20px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: #ff1e00;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin: 35px;
+}
+
+#video-section{
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+    align-items: center;
+    width: 100%;
+}
+/* Loading spinner styles */
+#loading {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  .spinner {
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-top: 4px solid #0add9e; /* Match your theme color */
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
