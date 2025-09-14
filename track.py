@@ -99,6 +99,8 @@ def run_tracking(start_x, start_y, end_x, end_y, video_path):
         cv2.putText(frame, f'count: {len(counter_down)}', (60, 40), cv2.FONT_HERSHEY_DUPLEX, 1.8, (0, 0, 255), 2)
         
         out.write(frame)
+        cv2.imshow("Processed Video", frame)# new add
+
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
     
@@ -112,3 +114,4 @@ def run_tracking(start_x, start_y, end_x, end_y, video_path):
     
     report_path = generate_environmental_report(output_video_path, final_count_path)
     return output_video_path, final_count_path, report_path
+
